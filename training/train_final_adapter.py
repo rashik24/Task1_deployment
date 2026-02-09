@@ -35,19 +35,18 @@ cmd = [
     "--per_device_train_batch_size", "1",
     "--learning_rate", "2e-4",
 
-    # CPU-safe flags
-    "--device", "cpu",
-    "--num_workers", "0",
+   
+  
     "--fp16", "false",
     "--bf16", "false",
-    "--torch_dtype", "float32",
+    
     "--gradient_checkpointing", "true",
 
     "--output_dir", "/tmp/final_train",
     "--overwrite_output_dir",
 
-    "--export_adapter",
-    "--adapter_dir", LOCAL_OUT,
+    
+   
 
     "--report_to", "none"
 ]
