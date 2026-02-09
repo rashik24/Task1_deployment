@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Temp / runtime
+/tmp/
+
+# Model artifacts
+out-llama*
+*.bin
+*.safetensors
+*.pt
+
+# HuggingFace cache
+.cache/
+
