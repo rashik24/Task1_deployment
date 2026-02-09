@@ -1,0 +1,11 @@
+{
+  "hours": {
+    "file_name": "hours_test.jsonl",
+    "formatting": "alpaca",
+    "columns": {
+      "instruction": "instruction",
+      "input": "input",
+      "output": "output"
+    }
+  }
+}
