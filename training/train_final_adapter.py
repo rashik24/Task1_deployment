@@ -64,26 +64,38 @@ subprocess.run(cmd, check=True, env=env)
 print("✅ Training finished. Adapter directory:", LOCAL_OUT)
 
 # -------------------------
-# Verify adapter export
+# Verify adapter files (in output_dir)
 # -------------------------
-if not os.path.exists(LOCAL_OUT):
-    raise RuntimeError(f"❌ Adapter directory does not exist: {LOCAL_OUT}")
+OUTPUT_DIR = "/tmp/final_train"
 
-files = os.listdir(LOCAL_OUT)
-if len(files) == 0:
+required_files = [
+    "adapter_model.safetensors",
+    "adapter_config.json"
+]
+
+missing = [
+    f for f in required_files
+    if not os.path.exists(os.path.join(OUTPUT_DIR, f))
+]
+
+if missing:
     raise RuntimeError(
-        f"❌ Adapter directory is empty. Training did not export adapter to {LOCAL_OUT}"
+        f"❌ Missing adapter files in {OUTPUT_DIR}: {missing}"
     )
 
-print("✅ Adapter files found:", files)
+print("✅ Adapter files found in output_dir:", required_files)
+
 
 # -------------------------
-# Upload to GCS
+# Upload adapter to GCS
 # -------------------------
-print(f"📦 Uploading adapter to: {GCS_PATH}")
+RUN_ID = datetime.datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
+GCS_PATH = f"gs://llama-adapters/hours/llama-3.2-1b/{RUN_ID}"
+
 subprocess.run(
-    ["gsutil", "-m", "cp", "-r", LOCAL_OUT, GCS_PATH],
+    ["gsutil", "-m", "cp", "-r", OUTPUT_DIR, GCS_PATH],
     check=True
 )
 
-print("✅ Adapter uploaded to:", GCS_PATH)
+print("📦 Adapter uploaded to:", GCS_PATH)
+
