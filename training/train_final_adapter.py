@@ -2,6 +2,18 @@ import os
 import subprocess
 import datetime
 import subprocess
+import os
+import subprocess
+import datetime
+
+# -------------------------
+# Paths
+# -------------------------
+LOCAL_OUT = "/tmp/final_adapter"
+os.makedirs(LOCAL_OUT, exist_ok=True)
+
+RUN_ID = datetime.datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
+GCS_PATH = f"gs://llama-adapters/hours/llama-3.2-1b/{RUN_ID}"
 
 RUN_ID = datetime.datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
 GCS_PATH = f"gs://llama-adapters/hours/llama-3.2-1b/{RUN_ID}"
