@@ -24,8 +24,9 @@ cmd = [
 
     "--model_name_or_path", "meta-llama/Llama-3.2-1B-Instruct",
 
-    "--dataset", "hours",
-    "--dataset_dir", "training",
+    "--dataset hours_test",
+    "--dataset_dir training",
+
 
 
 
