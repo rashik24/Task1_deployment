@@ -17,3 +17,7 @@ out-llama*
 # HuggingFace cache
 .cache/
 
+# Data files
+*.jsonl
+training/*.jsonl
+
