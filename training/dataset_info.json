@@ -1,11 +1,15 @@
 {
-  "hours": {
+  "hours_test": {
     "file_name": "hours_test.jsonl",
-    "formatting": "alpaca",
+    "formatting": "sharegpt",
     "columns": {
-      "instruction": "instruction",
-      "input": "input",
-      "output": "output"
+      "messages": "conversations"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
     }
   }
 }
